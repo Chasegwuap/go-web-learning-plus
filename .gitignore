@@ -1,0 +1,19 @@
+# Go build files
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Go test files
+*.test
+
+# Go workspace
+go.work
+go.work.sum
+
+# OS / editor junk
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

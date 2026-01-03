@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Go Web Learning Plus</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="heading">
+            <span class="emoji">👯‍♀️</span>
+            <span class="text">Les distributrices_a.m</span>
+            <span class="emoji">👯</span>
+            <span class="emoji">🏢</span>
+        </h1>
+        <p>📍 Service de machines distributrices</p>
+        <p>💵 Installation & service GRATUITS.</p>
+        <p>📩 DM/courriel: <a href="mailto:snackladies20@gmail.com">snackladies20@gmail.com</a></p>
+        
+        <button class="cta-btn" onclick="alert('Merci de nous contacter ! 📩')">Contactez-nous</button>
+    </div>
+
+    <!-- Floating emojis background -->
+    <div class="floating-emojis">
+        <span>🛒</span>
+        <span>🥤</span>
+        <span>🍪</span>
+        <span>🍫</span>
+        <span>🪙</span>
+        <span>🍬</span>
+        <span>🧃</span>
+        <span>💖</span>
+        <span>😍</span>
+        <span>🪄</span>
+    </div>
+
+    <script>
+        // Smooth floating animation
+        const emojis = document.querySelectorAll('.floating-emojis span');
+        emojis.forEach((emoji) => {
+            let x = Math.random() * window.innerWidth;
+            let y = Math.random() * window.innerHeight;
+            let speedX = (Math.random() - 0.5) * 0.5;
+            let speedY = (Math.random() - 0.5) * 0.5;
+
+            function animate() {
+                x += speedX;
+                y += speedY;
+
+                if(x < 0 || x > window.innerWidth) speedX *= -1;
+                if(y < 0 || y > window.innerHeight) speedY *= -1;
+
+                emoji.style.left = x + 'px';
+                emoji.style.top = y + 'px';
+
+                requestAnimationFrame(animate);
+            }
+            animate();
+        });
+    </script>
+</body>
+</html>
