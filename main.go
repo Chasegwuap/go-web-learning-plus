@@ -6,6 +6,40 @@ import (
 	"net/http"
 )
 
+var tmpl = template.Must(template.ParseGlob("templates/*.html"))
+
+func homeHandler(w http.ResponseWriter, r *http.Request) {
+	tmpl.ExecuteTemplate(w, "base.html", map[string]string{"Title": "Home"})
+}
+
+func aboutHandler(w http.ResponseWriter, r *http.Request) {
+	tmpl.ExecuteTemplate(w, "base.html", map[string]string{"Title": "About"})
+}
+
+func orderHandler(w http.ResponseWriter, r *http.Request) {
+	tmpl.ExecuteTemplate(w, "base.html", map[string]string{"Title": "Order"})
+}
+
+func main() {
+	mux := http.NewServeMux()
+
+	mux.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
+	mux.HandleFunc("/", homeHandler)
+	mux.HandleFunc("/about", aboutHandler)
+	mux.HandleFunc("/order", orderHandler)
+
+	log.Println("Server running on http://localhost:8080")
+	http.ListenAndServe(":8080", mux)
+}
+
+/*package main
+
+import (
+	"html/template"
+	"log"
+	"net/http"
+)
+
 func main() {
 	// Create a new ServeMux
 	mux := http.NewServeMux()
@@ -26,6 +60,13 @@ func main() {
 	// About route
 	mux.HandleFunc("/about", func(w http.ResponseWriter, r *http.Request) {
 		tmpl.ExecuteTemplate(w, "about.html", nil)
+
+	})
+
+	//order route
+
+	mux.HandleFunc("/order", func(w http.ResponseWriter, r *http.Request) {
+		tmpl.ExecuteTemplate(w, "order.html", nil)
 	})
 
 	log.Println("Server running 🚀 on http://localhost:8080")

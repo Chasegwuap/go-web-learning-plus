@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{.Title}}</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/about">About</a>
+            <a href="/order">Order</a>
+        </nav>
+    </header>
+
+    <main>
+        {{template "content" .}}
+    </main>
+
+    <footer>
+        <p>© 2026 My Go Web App</p>
+    </footer>
+</body>
+</html>
