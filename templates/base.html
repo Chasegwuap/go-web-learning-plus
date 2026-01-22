@@ -2,24 +2,34 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{{.Title}}</title>
-    <link rel="stylesheet" href="/static/css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{{ if .Title }}{{ .Title }}{{ else }}Les distributions_a.m{{ end }}</title>
+
+    <link rel="stylesheet" href="/static/style.css">
+
+    {{/* Extra head content per page (SEO, page CSS, etc.) */}}
+    {{ block "head" . }}{{ end }}
 </head>
 <body>
-    <header>
-        <nav>
-            <a href="/">Home</a>
-            <a href="/about">About</a>
-            <a href="/order">Order</a>
-        </nav>
-    </header>
 
-    <main>
-        {{template "content" .}}
-    </main>
+<header>
+    <nav aria-label="Main navigation">
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+        <a href="/order">Order</a>
+        <a href="/contact">Contact</a>
+    </nav>
+</header>
 
-    <footer>
-        <p>© 2026 My Go Web App</p>
-    </footer>
+<main id="content">
+    {{ block "content" . }}{{ end }}
+</main>
+
+<footer>
+    <p>© {{ .Year }} Les distributions_a.m</p>
+</footer>
+
 </body>
 </html>
+
